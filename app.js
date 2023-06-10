@@ -2,6 +2,8 @@ const express=require('express');
 const router = require("./src/routes/api");
 const app=new express();
 const mongoose=require("mongoose");
+const bodyParser = require('body-parser')
+
 
 //Security Middleware Import
 const rateLimit= require('express-rate-limit')
@@ -18,6 +20,8 @@ app.use(helmet())
 app.use(mongoSanitize())
 app.use(xss())
 app.use(hpp())
+app.use(bodyParser.json())
+
 
 //Request Rate Limiting
 const limiter = rateLimit({
@@ -43,7 +47,7 @@ app.use("/api/v1",router);
 
 //Undefined Route
 app.use('*',(req,res)=>{
-    res.status(404).json({status:"fail",data:"Not found"})
+    res.status(404).json({message:"Invalid URL",data:"Not found"})
 })
 
 module.exports=app;

@@ -1,9 +1,8 @@
 const express=require("express");
-const HelloController=require("../controller/HelloController");
+const studentController=require("../controller/StudentController")
 const router=  express.Router();
 
 //---------APIs
-router.get("/hello-get",HelloController.HelloGet)
-router.post("/hello-post",HelloController.HelloPost)
+router.post("/insert-student",studentController.insertStudent)
 
 module.exports=router;
