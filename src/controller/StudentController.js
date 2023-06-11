@@ -15,7 +15,7 @@ exports.insertStudent = (req, res) => {
 // read student data
 exports.readAllStudent = (req, res) => {
   let query = {};
-  let projection = "name roll class remarks";
+  let projection = "name roll class remarks email mobile";
 
   studentModel.find(query, projection, (err, data) => {
     if (err) {
